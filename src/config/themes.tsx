@@ -6,30 +6,35 @@ export const H1 = {
   fontWeight: 700,
   lineHeight: '130%',
 };
+
 export const H2 = {
   fontFamily: "'Open Sans', sans-serif",
   fontSize: '2.25rem',
   fontWeight: 700,
   lineHeight: '130%',
 };
+
 export const H3 = {
   fontFamily: "'Open Sans', sans-serif",
   fontSize: '1.25rem',
   fontWeight: 700,
   lineHeight: '130%',
 };
+
 export const bodyLarge = (fontWeight: 400 | 600 = 400) => ({
   fontFamily: "'Open Sans', sans-serif",
   fontSize: '1rem',
   fontWeight: fontWeight === 600 ? 600 : 400,
   lineHeight: '150%',
 });
+
 export const bodySmall = {
   fontFamily: "'Open Sans', sans-serif",
   fontSize: '0.875rem',
   fontWeight: 400,
   lineHeight: '150%',
 };
+
 export const Caption = {
   fontFamily: "'Open Sans', sans-serif",
   fontSize: '0.75rem',
@@ -58,8 +63,6 @@ const GlobalStyles = createGlobalStyle`
     --accent1-light: #00bfc1;
     --accent1-medium: #009598;
     --accent1-dark: #006c6e;
- 
-  }
-`;
+  }`;
 
 export default GlobalStyles;
