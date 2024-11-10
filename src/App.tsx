@@ -1,7 +1,8 @@
 import React from 'react';
 import GlobalStyles from './config/themes';
 import { Button } from './components/button';
-import { IconArrowLeft } from '@tabler/icons-react';
+import { IconSearch } from '@tabler/icons-react';
+import Search from './components/search';
 
 function App() {
   return (
