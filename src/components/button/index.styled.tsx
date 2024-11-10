@@ -72,9 +72,6 @@ export const IconContainer = styled.div<{ position: IconPosition }>`
   display: inline-flex;
   ${(props) =>
     props.position === 'left' ? 'margin-right: 8px;' : 'margin-left: 8px;'}
-  svg {
-    fill: currentColor;
-  }
 `;
 
 export const StyledButton = styled.button<StyledButtonProps>`
