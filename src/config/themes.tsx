@@ -1,42 +1,36 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const H1 = {
-  fontFamily: "'Open Sans', sans-serif",
   fontSize: '3.5rem',
   fontWeight: 700,
   lineHeight: '130%',
 };
 
 export const H2 = {
-  fontFamily: "'Open Sans', sans-serif",
   fontSize: '2.25rem',
   fontWeight: 700,
   lineHeight: '130%',
 };
 
 export const H3 = {
-  fontFamily: "'Open Sans', sans-serif",
   fontSize: '1.25rem',
   fontWeight: 700,
   lineHeight: '130%',
 };
 
 export const bodyLarge = (fontWeight: 400 | 600 = 400) => ({
-  fontFamily: "'Open Sans', sans-serif",
   fontSize: '1rem',
   fontWeight: fontWeight === 600 ? 600 : 400,
   lineHeight: '150%',
 });
 
 export const bodySmall = {
-  fontFamily: "'Open Sans', sans-serif",
   fontSize: '0.875rem',
   fontWeight: 400,
   lineHeight: '150%',
 };
 
 export const Caption = {
-  fontFamily: "'Open Sans', sans-serif",
   fontSize: '0.75rem',
   fontWeight: 400,
   lineHeight: '130%',
@@ -63,6 +57,15 @@ const GlobalStyles = createGlobalStyle`
     --accent1-light: #00bfc1;
     --accent1-medium: #009598;
     --accent1-dark: #006c6e;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
   }`;
 
 export default GlobalStyles;
