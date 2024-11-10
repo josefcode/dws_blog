@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ReactElement } from 'react';
 
-type ButtonVariant = 'primary' | 'secondary';
+type ButtonVariant = 'primary' | 'secondary' | 'search';
 export type IconPosition = 'left' | 'right';
 
 export interface StyledButtonProps {
@@ -11,5 +11,5 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   icon?: ReactElement;
   iconPosition?: IconPosition;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }

@@ -11,12 +11,18 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <StyledButton $variant={variant} {...props}>
-      {icon && iconPosition === 'left' && (
-        <IconContainer position="left">{icon}</IconContainer>
-      )}
-      {children}
-      {icon && iconPosition === 'right' && (
-        <IconContainer position="right">{icon}</IconContainer>
+      {variant === 'search' && icon ? (
+        icon
+      ) : (
+        <>
+          {icon && iconPosition === 'left' && (
+            <IconContainer position="left">{icon}</IconContainer>
+          )}
+          {children}
+          {icon && iconPosition === 'right' && (
+            <IconContainer position="right">{icon}</IconContainer>
+          )}
+        </>
       )}
     </StyledButton>
   );

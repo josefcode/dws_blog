@@ -38,6 +38,36 @@ const secondaryStyles = css`
   }
 `;
 
+const searchStyles = css`
+  background-color: var(--primary-dark);
+  color: var(--neutral-lightest);
+  border: none;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.3s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after {
+    border-color: var(--neutral-extra-light);
+  }
+`;
+
 export const IconContainer = styled.div<{ position: IconPosition }>`
   display: inline-flex;
   ${(props) =>
@@ -50,5 +80,9 @@ export const IconContainer = styled.div<{ position: IconPosition }>`
 export const StyledButton = styled.button<StyledButtonProps>`
   ${buttonBase};
   ${(props) =>
-    props.$variant === 'secondary' ? secondaryStyles : primaryStyles};
+    props.$variant === 'secondary'
+      ? secondaryStyles
+      : props.$variant === 'search'
+      ? searchStyles
+      : primaryStyles};
 `;
