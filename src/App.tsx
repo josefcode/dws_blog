@@ -1,5 +1,7 @@
 import React from 'react';
 import GlobalStyles from './config/themes';
+import { Button } from './components/button';
+import { IconArrowLeft } from '@tabler/icons-react';
 
 function App() {
   return (
