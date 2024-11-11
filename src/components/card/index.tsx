@@ -10,25 +10,32 @@ import {
   CategoryTag,
 } from './index.styled';
 import { CardProps } from './types';
+import { useNavigate } from 'react-router-dom';
 
 const Card = ({
+  id,
   createdAt,
+  thumbnail_url,
   author,
   title,
-  description,
+  content,
   categories,
 }: CardProps) => {
   const formattedDate = new Date(createdAt).toLocaleDateString();
+  const navigate = useNavigate();
 
+  const handleCardClick = () => {
+    navigate(`/post/${id}`);
+  };
   return (
-    <CardContainer>
-      <Image src={author.profilePicture} alt={title} />
+    <CardContainer onClick={handleCardClick}>
+      <Image src={thumbnail_url} alt={title} />
       <InfoContainer>
         <MetaData>
           {formattedDate} • {author.name}
         </MetaData>
         <Title>{title}</Title>
-        <Description>{description}</Description>
+        <Description>{content}</Description>
         <CategoryContainer>
           {categories.map((category, index) => (
             <CategoryTag key={index}>{category.name}</CategoryTag>

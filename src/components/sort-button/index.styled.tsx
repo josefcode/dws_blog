@@ -9,7 +9,7 @@ export const SortContainer = styled.div`
 `;
 
 interface SortButtonProps {
-  isSelected: boolean;
+  $isSelected: boolean;
 }
 
 // Styled button for the toggle button
@@ -22,11 +22,11 @@ export const SortButton = styled.button<SortButtonProps>`
   padding: 8px;
   ${bodyLarge(600)}
   color: ${(props) =>
-    props.isSelected
+    props.$isSelected
       ? 'var(--neutral-extra-light)'
       : 'var(--neutral-extra-dark)'};
   background-color: ${(props) =>
-    props.isSelected ? 'var(--accent1-medium)' : 'transparent'};
+    props.$isSelected ? 'var(--accent1-medium)' : 'transparent'};
   border: none;
   border-radius: 42px;
   cursor: pointer;
@@ -46,7 +46,7 @@ export const SortIcon = styled.span<SortButtonProps>`
     width: 16px;
     height: 16px;
     stroke: ${(props) =>
-      props.isSelected
+      props.$isSelected
         ? 'var(--neutral-extra-light)'
         : 'var(--accent1-medium)'};
     transition: stroke 0.3s;

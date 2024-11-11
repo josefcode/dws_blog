@@ -11,9 +11,9 @@ const Sort: React.FC = () => {
 
   return (
     <SortContainer>
-      <SortButton isSelected={isNewestFirst} onClick={handleToggle}>
+      <SortButton $isSelected={isNewestFirst} onClick={handleToggle}>
         {isNewestFirst ? 'Newest first' : 'Oldest first'}
-        <SortIcon isSelected={isNewestFirst}>
+        <SortIcon $isSelected={isNewestFirst}>
           <IconArrowsUpDown />
         </SortIcon>
       </SortButton>

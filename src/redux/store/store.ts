@@ -1,15 +1,14 @@
-// Stryker disable all
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import postsReducer from '../reducer/modules/list-posts/list-posts.reducer';
+import postReducer from '../reducer/modules/selected-post/selected-post.reducer';
 
 export const storeFactory = () => {
   return configureStore({
-    // preloadedState: getPreLoadedStateOnLocalStore(preloadedState),
     reducer: {
       posts: postsReducer,
+      post: postReducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   });
 };
 

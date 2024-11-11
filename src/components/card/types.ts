@@ -8,9 +8,11 @@ export interface Category {
 }
 
 export interface CardProps {
+  id: string;
+  thumbnail_url: string;
   createdAt: string;
   author: Author;
   title: string;
-  description: string;
+  content: string;
   categories: Category[];
 }

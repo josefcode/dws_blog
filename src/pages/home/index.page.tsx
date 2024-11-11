@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { IconChevronDown } from '@tabler/icons-react';
-import { Button } from '../../components/button';
 import DropdownButton from '../../components/drop-down-button';
 import Sort from '../../components/sort-button';
-import Card from '../../components/card';
 import { useAppDispatch, useAppSelector } from '../../redux/store/store';
 import { fetchPosts } from '../../redux/reducer/modules/list-posts/list-posts.reducer';
+import { HomeBtnsWrapper, HomeContainer } from './index.styled';
+import { ListAllPosts } from './component/list-all-posts/indext';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
@@ -29,13 +28,8 @@ export const Home = () => {
     return <div>Error: {error}</div>;
   }
   return (
-    <>
-      <div
-        style={{
-          padding: '16px',
-          display: 'flex',
-        }}
-      >
+    <HomeContainer>
+      <HomeBtnsWrapper>
         <DropdownButton
           label="Category"
           options={[
@@ -58,23 +52,8 @@ export const Home = () => {
         />
 
         <Sort />
-      </div>
-
-      {posts.map((post) => {
-        console.log(post);
-      })}
-      <ul style={{ paddingInline: '16px', display: 'grid', gap: 16 }}>
-        {posts?.map((post: any) => (
-          <Card
-            key={post.id}
-            createdAt={post.createdAt}
-            author={post.author}
-            title={post.title}
-            description={post.content}
-            categories={post.categories}
-          />
-        ))}
-      </ul>
-    </>
+      </HomeBtnsWrapper>
+      <ListAllPosts posts={posts} />
+    </HomeContainer>
   );
 };

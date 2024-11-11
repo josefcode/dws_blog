@@ -1,5 +1,3 @@
-// src/features/posts/postsSlice.ts
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -7,7 +5,6 @@ interface Post {
   id: string;
   title: string;
   body: string;
-  // Add other fields as necessary
 }
 
 interface PostsState {
@@ -22,7 +19,6 @@ const initialState: PostsState = {
   error: null,
 };
 
-// Async thunk for fetching posts
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   const response = await axios.get(
     'https://tech-test-backend.dwsbrazil.io/posts/',
