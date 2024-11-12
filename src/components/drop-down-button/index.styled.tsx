@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { bodyLarge, bodySmall } from '../../config/themes';
 
 export const DropdownContainer = styled.div`
   position: relative;
@@ -18,16 +17,18 @@ export const DropdownButtonStyled = styled.button`
   width: 100%;
   height: 32px;
   cursor: pointer;
-  ${bodyLarge(600)}
+  font-size: 12px;
+  line-height: auto;
+  font-weight: bold;
   transition: background-color 0.3s;
 
   &:hover,
   &:focus {
-    background-color: rgba(211, 20, 80, 0.05);
+    background-color: rgba(var(--secondary-light-rgba), 0.2);
   }
-
-  @media (max-width: 768px) {
-    ${bodySmall}
+  svg {
+    width: 12px;
+    height: 12px;
   }
 `;
 
@@ -54,13 +55,17 @@ export const ClearButton = styled.span`
   &:hover {
     color: var(--secondary-dark);
   }
+  svg {
+    width: 12px;
+    height: 12px;
+  }
 `;
 
 export const DropdownList = styled.ul`
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 314px;
+  min-width: fit-content;
   min-height: fit-content;
   list-style: none;
   background-color: var(--neutral-lightest);
@@ -73,9 +78,11 @@ export const DropdownList = styled.ul`
 
 export const DropdownListItem = styled.li`
   cursor: pointer;
+  white-space: nowrap;
   margin-block-end: 8px;
   padding-block: 4px;
   font-size: 14px;
   line-height: 20px;
+  font-weight: 400;
   color: var(--neutral-extra-dark);
 `;

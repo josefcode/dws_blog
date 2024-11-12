@@ -48,6 +48,6 @@ export const FilterList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: #4b4b4b;
-  border-top: 1px solid #e0e0e0;
+  color: var(--neutrals-dark);
+  border-top: 1px solid var(--neutrals-extra-light);
 `;

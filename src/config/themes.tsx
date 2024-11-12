@@ -52,6 +52,7 @@ const GlobalStyles = createGlobalStyle`
     --primary-dark: #020318;
 
     --secondary-light: #ef4c84;
+    --secondary-light-rgba: 239, 76, 132;
     --secondary-medium: #d31450;
     --secondary-dark: #8c1038;
 

@@ -44,6 +44,8 @@ export const HomeBtnsWrapper = styled.div`
   padding-block: 16px;
   display: none;
   @media (max-width: 768px) {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
   }
 `;

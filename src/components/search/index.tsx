@@ -6,6 +6,7 @@ import {
   SearchButtonWrapper,
   SuggestionsDropdown,
   SuggestionItem,
+  DeleteBtn,
 } from './index.styled';
 import { Button } from '../button';
 import { SearchProps } from './types';
@@ -25,6 +26,7 @@ const Search = forwardRef<HTMLDivElement, SearchProps>(
     const [searchValue, setSearchValue] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
     const [filteredSuggestions, setFilteredSuggestions] = useState(suggestions);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
       setInternalIsFocused(isFocused);
@@ -33,9 +35,23 @@ const Search = forwardRef<HTMLDivElement, SearchProps>(
       }
     }, [isFocused]);
 
-    const handleFocus = () => setInternalIsFocused(true);
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (
+          containerRef.current &&
+          !containerRef.current.contains(event.target as Node)
+        ) {
+          setInternalIsFocused(false);
+        }
+      };
 
-    const handleBlur = () => setInternalIsFocused(false);
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, []);
+
+    const handleFocus = () => setInternalIsFocused(true);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const inputValue = e.target.value;
@@ -51,9 +67,11 @@ const Search = forwardRef<HTMLDivElement, SearchProps>(
       }
     };
 
-    const clearInput = () => {
+    const clearInput = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
       setSearchValue('');
       setFilteredSuggestions(suggestions);
+      setInternalIsFocused(false);
     };
 
     const handleSuggestionSelect = (suggestion: string) => {
@@ -66,20 +84,21 @@ const Search = forwardRef<HTMLDivElement, SearchProps>(
     };
 
     return (
-      <SearchContainer ref={ref}>
+      <SearchContainer ref={containerRef}>
         <StyledInput
           ref={inputRef}
           type="text"
           placeholder={internalIsFocused ? '' : placeholder}
           value={searchValue}
           onFocus={handleFocus}
-          onBlur={handleBlur}
           onChange={handleInputChange}
           $isFocused={internalIsFocused}
         />
-        <SearchButtonWrapper onClick={searchValue ? clearInput : undefined}>
+        <SearchButtonWrapper>
           {internalIsFocused ? (
-            <IconX className="close_icon" />
+            <DeleteBtn onMouseDown={clearInput}>
+              <IconX className="close_icon" />
+            </DeleteBtn>
           ) : (
             <Button variant="search" icon={<IconSearch />} />
           )}

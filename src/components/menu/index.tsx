@@ -6,6 +6,7 @@ import {
   MainTitle,
   Subtitle,
   Nav,
+  Header,
 } from './index.styled';
 import { Button } from '../button';
 import Search from '../search';
@@ -36,27 +37,29 @@ const Menu = () => {
   }, []);
 
   return (
-    <HeaderContainer $isSearchVisible={isSearchVisible}>
-      {isSearchVisible ? null : (
-        <TitleContainer>
-          <h1>
-            <MainTitle>dentsu</MainTitle>
-            <Subtitle>world services</Subtitle>
-          </h1>
-        </TitleContainer>
-      )}
-      <Nav>
-        {isDesktop || isSearchVisible ? (
-          <Search ref={searchRef} />
-        ) : (
-          <Button
-            variant="search"
-            icon={<IconSearch />}
-            onClick={toggleSearch}
-          />
+    <Header>
+      <HeaderContainer $isSearchVisible={isSearchVisible}>
+        {isSearchVisible ? null : (
+          <TitleContainer>
+            <h1>
+              <MainTitle>dentsu</MainTitle>
+              <Subtitle>world services</Subtitle>
+            </h1>
+          </TitleContainer>
         )}
-      </Nav>
-    </HeaderContainer>
+        <div>
+          {isDesktop || isSearchVisible ? (
+            <Search ref={searchRef} />
+          ) : (
+            <Button
+              variant="search"
+              icon={<IconSearch />}
+              onClick={toggleSearch}
+            />
+          )}
+        </div>
+      </HeaderContainer>
+    </Header>
   );
 };
 

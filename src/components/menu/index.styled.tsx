@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 import { bodySmall, H2, H3 } from '../../config/themes';
 
-export const HeaderContainer = styled.header<{ $isSearchVisible: boolean }>`
+export const Header = styled.header`
+  border-bottom: 2px solid var(--neutral-extra-light);
+`;
+
+export const HeaderContainer = styled.nav<{ $isSearchVisible: boolean }>`
   display: ${(props) => (props.$isSearchVisible ? 'block' : 'flex')};
   justify-content: space-between;
-  padding-block: 16px;
-  padding-inline: 17rem;
+  padding-block: 20px;
+  max-width: 1380px;
+  margin: 0 auto;
   align-items: center;
-  border-bottom: 2px solid var(--neutral-extra-light);
 
   @media (max-width: 768px) {
     padding-inline: 1rem;

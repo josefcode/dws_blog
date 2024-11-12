@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 import { bodyLarge } from '../../config/themes';
+import { SortButtonProps } from './types';
 
 export const SortContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-
-interface SortButtonProps {
-  $isSelected: boolean;
-}
 
 export const SortButton = styled.button<SortButtonProps>`
   display: flex;
@@ -38,18 +35,28 @@ export const SortButton = styled.button<SortButtonProps>`
       stroke: var(--neutral-extra-light);
     }
   }
+
+  @media (max-width: 768px) {
+    font-weight: 400;
+  }
 `;
 
 export const SortIcon = styled.span<SortButtonProps>`
   display: inline-flex;
   margin-left: 4px;
   svg {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     stroke: ${(props) =>
       props.$isSelected
         ? 'var(--neutral-extra-light)'
         : 'var(--accent1-medium)'};
     transition: stroke 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    line-height: auto;
+    font-weight: bold;
   }
 `;

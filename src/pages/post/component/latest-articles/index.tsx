@@ -8,10 +8,11 @@ export const LatestArticles = ({ articles, postId }: any) => {
   }
 
   const latestArticles = articles
-    .filter((p: CardProps) => p.id !== postId)
+    .filter((post: CardProps) => post.id !== postId)
     .sort(
-      (a: any, b: any) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+      (firstDetail: any, secondDetail: any) =>
+        new Date(firstDetail.createdAt).getTime() -
+        new Date(secondDetail.createdAt).getTime(),
     )
     .slice(0, 3);
   return (

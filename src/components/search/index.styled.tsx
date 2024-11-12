@@ -8,7 +8,7 @@ export const SearchContainer = styled.div`
 `;
 
 export const StyledInput = styled.input<{ $isFocused: boolean }>`
-  width: 100%;
+  width: 500px;
   padding-block: 16px;
   padding-left: 16px;
   padding-right: 8px;
@@ -62,4 +62,10 @@ export const SearchButtonWrapper = styled.div`
     margin-right: 10px;
     stroke: var(--neutral-dark);
   }
+`;
+
+export const DeleteBtn = styled.button`
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
 `;

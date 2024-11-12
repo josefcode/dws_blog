@@ -8,47 +8,28 @@ import { Button } from '../../components/button';
 import { AuthorInfo } from './component/author-Info';
 import { SplitText } from './component/split-text';
 import { LatestArticles } from './component/latest-articles';
-import { BackBtnWrapper, PostContainer } from './index.styled';
+import { BackBtnWrapper, PostContainer, PostImage } from './index.styled';
+import BackgroundGrid from '../../components/background';
 
 const PostPage = () => {
   const { postId } = useParams<{ postId: string }>();
   const navigate = useNavigate();
 
-  //   const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-  //   const {
-  //     item: post,
-  //     status: postStatus,
-  //     error: postError,
-  //   } = useAppSelector((state) => state.post);
+  const { item: post = [] } = useAppSelector((state) => state.post);
 
-  //   const { items: allPosts, status: postsStatus } = useAppSelector(
-  //     (state) => state.posts,
-  //   );
+  const { items: posts = [] } = useAppSelector((state) => state.posts);
 
-  //   useEffect(() => {
-  //     if (postId) {
-  //       dispatch(fetchPostById(postId));
-  //     }
-  //     if (postsStatus === 'idle') {
-  //       dispatch(fetchPosts());
-  //     }
-  //   }, [postId, dispatch, postsStatus]);
+  useEffect(() => {
+    dispatch(fetchPostById(postId));
 
-  //   if (postStatus === 'loading' || postsStatus === 'loading') {
-  //     return <div>Loading...</div>;
-  //   }
-
-  //   if (postStatus === 'failed') {
-  //     return <div>Error: {postError}</div>;
-  //   }
-
-  //   if (!post) {
-  //     return <div>Post not found.</div>;
-  //   }
+    dispatch(fetchPosts());
+  }, [postId, dispatch]);
 
   return (
     <PostContainer>
+      <BackgroundGrid />
       <BackBtnWrapper>
         <Button
           icon={<IconArrowLeft />}
@@ -58,15 +39,13 @@ const PostPage = () => {
           Back
         </Button>
       </BackBtnWrapper>
-      {/* <h1>{post.title}</h1>
-      <AuthorInfo author={post.author} createdAt={post.createdAt} />
-      <img
-        src={post.thumbnail_url}
-        alt={post.title}
-        style={{ width: '100%', borderRadius: '12px', marginBlock: '20px' }}
-      />
-      <SplitText content={post.content} />
-      <LatestArticles articles={allPosts} postId={postId} /> */}
+      <div>
+        <h1>{post.title}</h1>
+        <AuthorInfo author={post.author} createdAt={post.createdAt} />
+        <PostImage src={post.thumbnail_url} alt={post.title} />
+        <SplitText content={post.content} />
+        <LatestArticles articles={posts} postId={postId} />
+      </div>
     </PostContainer>
   );
 };

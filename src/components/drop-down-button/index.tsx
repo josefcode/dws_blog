@@ -13,18 +13,17 @@ import { DropdownButtonProps } from './types';
 const DropdownButton = ({
   label = 'Category',
   options,
-  maxDisplay = 3,
 }: DropdownButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
-  const handleSelect = (option: string) => {
+  const handleSelect = (e: React.MouseEvent, option: string) => {
+    e.stopPropagation();
     if (!selectedOptions.includes(option)) {
       setSelectedOptions([...selectedOptions, option]);
     }
-    setIsOpen(false);
+    toggleDropdown();
   };
 
   const clearSelection = (e: React.MouseEvent) => {
@@ -57,7 +56,10 @@ const DropdownButton = ({
       {isOpen && (
         <DropdownList>
           {options.map((option) => (
-            <DropdownListItem key={option} onClick={() => handleSelect(option)}>
+            <DropdownListItem
+              key={option}
+              onClick={(e) => handleSelect(e, option)}
+            >
               {option}
             </DropdownListItem>
           ))}

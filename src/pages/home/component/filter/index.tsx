@@ -15,32 +15,8 @@ import { fetchCategories } from '../../../../redux/reducer/modules/list-categori
 
 const FilterComponent: React.FC = () => {
   const dispatch = useAppDispatch();
-  //   const { authors, loading, error } = useAppSelector((state) => state.authors);
-  const mockAuthors = [
-    { id: '1', name: 'Emily Davis' },
-    { id: '2', name: 'John Smith' },
-    { id: '3', name: 'Alice Johnson' },
-    { id: '4', name: 'Michael Brown' },
-    { id: '5', name: 'Sophia Martinez' },
-    { id: '6', name: 'William Garcia' },
-    { id: '7', name: 'Olivia Wilson' },
-    { id: '8', name: 'James Anderson' },
-    { id: '9', name: 'Isabella Thomas' },
-    { id: '10', name: 'Liam Robinson' },
-  ];
-  //   const { categories } = useAppSelector((state) => state.categories);
-  const mockCategories = [
-    { id: '1', name: 'Technology' },
-    { id: '2', name: 'Science' },
-    { id: '3', name: 'Health' },
-    { id: '4', name: 'Travel' },
-    { id: '5', name: 'Food' },
-    { id: '6', name: 'Lifestyle' },
-    { id: '7', name: 'Education' },
-    { id: '8', name: 'Business' },
-    { id: '9', name: 'Entertainment' },
-    { id: '10', name: 'Sports' },
-  ];
+  const { authors } = useAppSelector((state) => state.authors);
+  const { categories } = useAppSelector((state) => state.categories);
 
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
 
@@ -57,15 +33,6 @@ const FilterComponent: React.FC = () => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  const filters = ['Category 1', 'Category 2', 'Category 3', 'Category 4'];
-
-  //   if (loading) {
-  //     return <p>Loading authors...</p>;
-  //   }
-
-  //   if (error) {
-  //     return <p>Error: {error}</p>;
-  //   }
   return (
     <FilterContainer>
       <FilterHeader>
@@ -76,7 +43,7 @@ const FilterComponent: React.FC = () => {
       <FilterSection>
         <FilterTitle>Category</FilterTitle>
         <FilterList>
-          {mockCategories.map((filter) => (
+          {categories.map((filter) => (
             <FilterItem
               key={filter.id}
               text={filter.name}
@@ -90,7 +57,7 @@ const FilterComponent: React.FC = () => {
       <FilterSection>
         <FilterTitle>Author</FilterTitle>
         <FilterList>
-          {mockAuthors.map((filter) => (
+          {authors.map((filter) => (
             <FilterItem
               key={filter.id}
               text={filter.name}
