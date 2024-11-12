@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   CardContainer,
   Image,
@@ -11,6 +10,7 @@ import {
 } from './index.styled';
 import { CardProps } from './types';
 import { useNavigate } from 'react-router-dom';
+import { IconPointFilled } from '@tabler/icons-react';
 
 const Card = ({
   id,
@@ -32,7 +32,7 @@ const Card = ({
       <Image src={thumbnail_url} alt={title} />
       <InfoContainer>
         <MetaData>
-          {formattedDate} • {author.name}
+          {formattedDate} <IconPointFilled className="svg-dot" /> {author.name}
         </MetaData>
         <Title>{title}</Title>
         <Description>{content}</Description>

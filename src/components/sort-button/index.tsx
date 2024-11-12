@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { SortContainer, SortButton, SortIcon } from './index.styled';
 import { IconArrowsUpDown } from '@tabler/icons-react';
 
-const Sort: React.FC = () => {
-  const [isNewestFirst, setIsNewestFirst] = useState(true);
+const SortBtn = () => {
+  const [isNewestFirst, setIsNewestFirst] = useState(false);
 
   const handleToggle = () => {
     setIsNewestFirst(!isNewestFirst);
@@ -12,7 +12,7 @@ const Sort: React.FC = () => {
   return (
     <SortContainer>
       <SortButton $isSelected={isNewestFirst} onClick={handleToggle}>
-        {isNewestFirst ? 'Newest first' : 'Oldest first'}
+        {isNewestFirst ? 'Oldest first' : 'Newest first'}
         <SortIcon $isSelected={isNewestFirst}>
           <IconArrowsUpDown />
         </SortIcon>
@@ -21,4 +21,4 @@ const Sort: React.FC = () => {
   );
 };
 
-export default Sort;
+export default SortBtn;

@@ -1,13 +1,9 @@
 import styled from 'styled-components';
-import { bodyLarge } from '../../config/themes';
+import { bodyLarge, bodySmall } from '../../config/themes';
 
 export const DropdownContainer = styled.div`
   position: relative;
   display: inline-block;
-
-  &:hover > ul {
-    display: block;
-  }
 `;
 
 export const DropdownButtonStyled = styled.button`
@@ -15,10 +11,11 @@ export const DropdownButtonStyled = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
   color: var(--secondary-medium);
   border: 1px solid var(--secondary-medium);
   border-radius: 42px;
-  min-width: 110px;
+  width: 100%;
   height: 32px;
   cursor: pointer;
   ${bodyLarge(600)}
@@ -27,6 +24,10 @@ export const DropdownButtonStyled = styled.button`
   &:hover,
   &:focus {
     background-color: rgba(211, 20, 80, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    ${bodySmall}
   }
 `;
 
@@ -46,7 +47,6 @@ export const ButtonContent = styled.div`
   }
 `;
 export const ClearButton = styled.span`
-  /* margin-left: 8px; */
   cursor: pointer;
   font-size: 1rem;
   color: var(--secondary-medium);
@@ -60,8 +60,7 @@ export const DropdownList = styled.ul`
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
-  min-width: fit-content;
+  min-width: 314px;
   min-height: fit-content;
   list-style: none;
   background-color: var(--neutral-lightest);
@@ -79,8 +78,4 @@ export const DropdownListItem = styled.li`
   font-size: 14px;
   line-height: 20px;
   color: var(--neutral-extra-dark);
-
-  &:hover {
-    background-color: rgba(211, 20, 80, 0.05);
-  }
 `;

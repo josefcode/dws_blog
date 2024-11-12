@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bodySmall, H2, H3 } from '../../../../config/themes';
+import { bodySmall, H2 } from '../../../../config/themes';
 
 export const Countainer = styled.div`
   margin-top: 40px;

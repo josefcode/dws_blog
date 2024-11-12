@@ -45,6 +45,7 @@ const GlobalStyles = createGlobalStyle`
     --neutral-dark: #7f8185;
     --neutral-extra-dark: #5e5f63;
     --neutral-darkest: #202122;
+    
 
     --primary-light: #0b0e3a;
     --primary-medium: #060725;
@@ -57,6 +58,7 @@ const GlobalStyles = createGlobalStyle`
     --accent1-light: #00bfc1;
     --accent1-medium: #009598;
     --accent1-dark: #006c6e;
+    --accent1-dark-rgb: 0, 108, 110; 
 
     * {
       margin: 0;

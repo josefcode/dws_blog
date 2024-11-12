@@ -1,5 +1,3 @@
-// src/components/Sort.styles.ts
-
 import styled from 'styled-components';
 import { bodyLarge } from '../../config/themes';
 
@@ -12,12 +10,12 @@ interface SortButtonProps {
   $isSelected: boolean;
 }
 
-// Styled button for the toggle button
 export const SortButton = styled.button<SortButtonProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 110px;
+  min-width: fit-content;
+  white-space: nowrap;
   height: 32px;
   padding: 8px;
   ${bodyLarge(600)}
@@ -35,13 +33,16 @@ export const SortButton = styled.button<SortButtonProps>`
   &:hover {
     background-color: var(--accent1-medium);
     color: var(--neutral-extra-light);
+
+    svg {
+      stroke: var(--neutral-extra-light);
+    }
   }
 `;
 
 export const SortIcon = styled.span<SortButtonProps>`
   display: inline-flex;
   margin-left: 4px;
-
   svg {
     width: 16px;
     height: 16px;
@@ -50,9 +51,5 @@ export const SortIcon = styled.span<SortButtonProps>`
         ? 'var(--neutral-extra-light)'
         : 'var(--accent1-medium)'};
     transition: stroke 0.3s;
-  }
-  &:hover {
-    background-color: var(--accent1-medium);
-    color: var(--neutral-extra-light);
   }
 `;

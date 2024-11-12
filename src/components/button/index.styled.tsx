@@ -1,7 +1,6 @@
-import React, { ButtonHTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
 import { bodyLarge } from '../../config/themes';
-import { ButtonProps, IconPosition, StyledButtonProps } from './types';
+import { IconPosition, StyledButtonProps } from './types';
 
 const buttonBase = css`
   ${bodyLarge(600)};

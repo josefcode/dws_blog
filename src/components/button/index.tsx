@@ -1,4 +1,3 @@
-import React from 'react';
 import { IconContainer, StyledButton } from './index.styled';
 import { ButtonProps } from './types';
 

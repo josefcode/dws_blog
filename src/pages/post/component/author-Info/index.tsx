@@ -1,3 +1,4 @@
+import { formatDate } from '../../../../utils/date-formater/date-formater';
 import { AuthorContainer, AuthorName, DateInfo, Image } from './index.styled';
 
 type AuthorProps = {
@@ -6,12 +7,6 @@ type AuthorProps = {
 };
 
 export const AuthorInfo = ({ author, createdAt }: AuthorProps) => {
-  const date = new Date(createdAt);
-  const formattedDate = new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(date);
   return (
     <AuthorContainer>
       <Image src={author.profilePicture} alt="Author image" />
@@ -19,7 +14,7 @@ export const AuthorInfo = ({ author, createdAt }: AuthorProps) => {
         <AuthorName>
           Written by: <strong>{author.name}</strong>
         </AuthorName>
-        <DateInfo>{formattedDate}</DateInfo>
+        <DateInfo>{formatDate(createdAt)}</DateInfo>
       </div>
     </AuthorContainer>
   );

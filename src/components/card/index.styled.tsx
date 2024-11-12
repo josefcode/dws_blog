@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { bodySmall, Caption, H3 } from '../../config/themes';
 
 export const CardContainer = styled.div`
-  min-width: 314px;
-  min-height: fit-content;
+  width: 100%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   border-radius: 16px;
@@ -30,6 +30,15 @@ export const InfoContainer = styled.div`
 export const MetaData = styled.div`
   ${Caption};
   color: var(--neutral-dark);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  svg {
+    fill: var(--secondary-medium);
+    width: 10px;
+    height: 10px;
+  }
 `;
 
 export const Title = styled.h3`

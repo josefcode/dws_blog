@@ -8,18 +8,13 @@ import {
   ClearButton,
 } from './index.styled';
 import { IconChevronDown, IconX } from '@tabler/icons-react';
+import { DropdownButtonProps } from './types';
 
-interface DropdownButtonProps {
-  label?: string;
-  options: string[];
-  maxDisplay?: number;
-}
-
-const DropdownButton: React.FC<DropdownButtonProps> = ({
+const DropdownButton = ({
   label = 'Category',
   options,
   maxDisplay = 3,
-}) => {
+}: DropdownButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
@@ -41,12 +36,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
     if (selectedOptions.length === 0) {
       return label;
     }
-    if (selectedOptions.length <= maxDisplay) {
-      return selectedOptions.join(', ');
-    }
-    return `${selectedOptions.slice(0, maxDisplay).join(', ')} +${
-      selectedOptions.length - maxDisplay
-    } more`;
+    return selectedOptions.slice(0, 2).join(', ');
   };
 
   return (

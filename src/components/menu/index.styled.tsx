@@ -1,12 +1,17 @@
 import styled from 'styled-components';
-import { H2, H3 } from '../../config/themes';
+import { bodySmall, H2, H3 } from '../../config/themes';
 
-export const HeaderContainer = styled.header`
-  display: flex;
-  align-items: center;
+export const HeaderContainer = styled.header<{ $isSearchVisible: boolean }>`
+  display: ${(props) => (props.$isSearchVisible ? 'block' : 'flex')};
   justify-content: space-between;
-  padding: 16px;
+  padding-block: 16px;
+  padding-inline: 17rem;
+  align-items: center;
   border-bottom: 2px solid var(--neutral-extra-light);
+
+  @media (max-width: 768px) {
+    padding-inline: 1rem;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -20,8 +25,7 @@ export const MainTitle = styled.span`
 `;
 
 export const Subtitle = styled.span`
-  font-size: 1rem;
-  font-weight: 400;
+  ${bodySmall}
 `;
 
 export const Nav = styled.nav`

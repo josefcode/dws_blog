@@ -15,13 +15,13 @@ interface Post {
 
 interface PostState {
   item: Post | null;
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  loading: boolean;
   error: string | null;
 }
 
 const initialState: PostState = {
   item: null,
-  status: 'idle',
+  loading: false,
   error: null,
 };
 
@@ -42,15 +42,15 @@ const postSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchPostById.pending, (state) => {
-        state.status = 'loading';
+        state.loading = true;
         state.error = null;
       })
       .addCase(fetchPostById.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.loading = false;
         state.item = action.payload;
       })
       .addCase(fetchPostById.rejected, (state, action) => {
-        state.status = 'failed';
+        state.loading = false;
         state.error = action.error.message || 'Failed to fetch post';
       });
   },
